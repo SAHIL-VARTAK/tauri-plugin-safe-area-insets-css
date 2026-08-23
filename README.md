@@ -53,3 +53,34 @@ Do not run this plugin outside of a Tauri environment. Doing so will create an i
 The plugin is configured to automatically set --safe-area-inset-bottom to 0 when the keyboard is visible.
 
 It is fully operational on both iOS and Android.
+
+# Fork Updates
+
+> **Fork changes:** Added `getEdgeInsets()` support and exposed safe-area values for all four edges:
+> `--edge-top`, `--edge-right`, `--edge-bottom`, and `--edge-left`.
+>
+> **Testing:** The new changes have currently been tested on **Android only**. iOS has not been tested with these modifications.
+
+A Tauri plugin to expose safe area insets as CSS variables for your frontend. This is useful for mobile applications where you need to account for notches, rounded corners, or system bars.
+
+After initialization, the following CSS variables are available:
+
+* `--edge-top`
+* `--edge-right`
+* `--edge-bottom`
+* `--edge-left`
+
+You can use these in your CSS:
+
+```css
+body {
+  padding-top: var(--edge-top);
+  padding-right: var(--edge-right);
+  padding-bottom: var(--edge-bottom);
+  padding-left: var(--edge-left);
+}
+```
+
+# Notes
+
+The original plugin supports both iOS and Android. **The modifications in this fork have currently only been tested on Android.**

@@ -13,3 +13,10 @@ pub(crate) async fn get_top_inset<R: Runtime>(app: AppHandle<R>) -> Result<GetIn
 pub(crate) async fn get_bottom_inset<R: Runtime>(app: AppHandle<R>) -> Result<GetInsetResponse> {
     app.safe_area_insets_css().get_bottom_inset()
 }
+
+#[command]
+pub(crate) async fn get_edge_insets<R: Runtime>(
+    app: AppHandle<R>,
+) -> Result<GetEdgeInsetsResponse> {
+    app.safe_area_insets_css().get_edge_insets()
+}

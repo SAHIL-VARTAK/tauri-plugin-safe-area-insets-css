@@ -35,4 +35,9 @@ impl<R: Runtime> SafeAreaInsetsCss<R> {
             .run_mobile_plugin("getBottomInset", ())
             .map_err(Into::into)
     }
+    pub fn get_edge_insets(&self) -> crate::Result<GetEdgeInsetsResponse> {
+        self.0
+            .run_mobile_plugin("getEdgeInsets", ())
+            .map_err(Into::into)
+    }
 }

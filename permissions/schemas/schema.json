@@ -307,6 +307,18 @@
           "markdownDescription": "Denies the get_bottom_inset command without any pre-configured scope."
         },
         {
+          "description": "Enables the get_edge_insets command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-edge-insets",
+          "markdownDescription": "Enables the get_edge_insets command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get_edge_insets command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-edge-insets",
+          "markdownDescription": "Denies the get_edge_insets command without any pre-configured scope."
+        },
+        {
           "description": "Enables the get_top_inset command without any pre-configured scope.",
           "type": "string",
           "const": "allow-get-top-inset",
@@ -367,10 +379,10 @@
           "markdownDescription": "Denies the unregister_listener command without any pre-configured scope."
         },
         {
-          "description": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-get-bottom-inset`\n- `allow-get-top-inset`\n- `allow-registerListener`\n- `allow-unregister-listener`",
+          "description": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-get-bottom-inset`\n- `allow-get-top-inset`\n- `allow-get-edge-insets`\n- `allow-registerListener`\n- `allow-unregister-listener`",
           "type": "string",
           "const": "default",
-          "markdownDescription": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-get-bottom-inset`\n- `allow-get-top-inset`\n- `allow-registerListener`\n- `allow-unregister-listener`"
+          "markdownDescription": "Default permissions for the plugin\n#### This default permission set includes:\n\n- `allow-get-bottom-inset`\n- `allow-get-top-inset`\n- `allow-get-edge-insets`\n- `allow-registerListener`\n- `allow-unregister-listener`"
         }
       ]
     }

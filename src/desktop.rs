@@ -21,4 +21,13 @@ impl<R: Runtime> SafeAreaInsetsCss<R> {
     pub fn get_bottom_inset(&self) -> crate::Result<GetInsetResponse> {
         Ok(GetInsetResponse { inset: 0.0 })
     }
+
+    pub fn get_edge_insets(&self) -> crate::Result<GetEdgeInsetsResponse> {
+        Ok(GetEdgeInsetsResponse {
+            top: 0.0,
+            right: 0.0,
+            bottom: 0.0,
+            left: 0.0,
+        })
+    }
 }
