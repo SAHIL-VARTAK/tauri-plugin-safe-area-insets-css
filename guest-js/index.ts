@@ -48,6 +48,16 @@ export async function onKeyboardHidden(
   );
 }
 
+export async function onEdgeInsetsChanged(
+  handler: (insets: GetEdgeInsetsResponse) => void
+): Promise<PluginListener> {
+  return await addPluginListener(
+    "safe-area-insets-css",
+    "edge-insets-changed",
+    handler
+  );
+}
+
 async function init() {
   const topInset = await getTopInset();
   const bottomInset = await getBottomInset();
@@ -59,20 +69,27 @@ async function init() {
     document.documentElement.style.setProperty('--safe-area-inset-bottom', `${bottomInset?.inset}px`);
   }
   if (edgeInsets) {
-    document.documentElement.style.setProperty("--edge-top", `${edgeInsets.top}px`);
-    document.documentElement.style.setProperty("--edge-right", `${edgeInsets.right}px`);
-    document.documentElement.style.setProperty("--edge-bottom", `${edgeInsets.bottom}px`);
-    document.documentElement.style.setProperty("--edge-left", `${edgeInsets.left}px`);
+    document.documentElement.style.setProperty("--edge-top", `${edgeInsets?.top}px`);
+    document.documentElement.style.setProperty("--edge-right", `${edgeInsets?.right}px`);
+    document.documentElement.style.setProperty("--edge-bottom", `${edgeInsets?.bottom}px`);
+    document.documentElement.style.setProperty("--edge-left", `${edgeInsets?.left}px`);
   }
 
-  onKeyboardShown(() => {
+  await onKeyboardShown(() => {
     document.documentElement.style.setProperty('--safe-area-inset-bottom', `0px`);
     document.documentElement.style.setProperty('--edge-bottom', `0px`);
   });
 
-  onKeyboardHidden(() => {
+  await onKeyboardHidden(() => {
     document.documentElement.style.setProperty('--safe-area-inset-bottom', `${bottomInset?.inset}px`);
     document.documentElement.style.setProperty('--edge-bottom', `${edgeInsets?.bottom}px`);
+  });
+
+  await onEdgeInsetsChanged((edgeInsets) => {
+    document.documentElement.style.setProperty("--edge-top", `${edgeInsets?.top}px`);
+    document.documentElement.style.setProperty("--edge-right", `${edgeInsets?.right}px`);
+    document.documentElement.style.setProperty("--edge-bottom", `${edgeInsets?.bottom}px`);
+    document.documentElement.style.setProperty("--edge-left", `${edgeInsets?.left}px`);
   });
 }
 

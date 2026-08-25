@@ -1,76 +1,53 @@
 # Tauri Plugin safe-area-insets-css
 
-A Tauri plugin to expose safe area insets as CSS variables for your frontend. This is useful for mobile applications where you need to account for notches, rounded corners, or system bars.
+> This is a fork of the original [tauri-plugin-safe-area-insets-css](https://github.com/saurl/tauri-plugin-safe-area-insets-css) plugin with additional support for exposing all four safe-area edge insets.
 
-#Rust Side
+A Tauri plugin to expose safe-area insets as CSS variables for your frontend. This is useful for mobile applications where you need to account for notches, rounded corners, system bars, and other system UI elements.
 
-## Add the crate to your Cargo.toml:
+## Rust Side
+
+### Add the crate to your `Cargo.toml`
+
 ```toml
-tauri-plugin-safe-area-insets-css = "0.1"
+[dependencies]
+tauri-plugin-safe-area-insets-css-edge = "0.2"
 ```
 
+### Initialize the plugin in your Tauri application
 
-## Initialize the plugin in your Tauri application:
 ```rust
 fn main() {
     tauri::Builder::default()
-        .plugin(tauri_plugin_safe_area_insets_css::init())
+        .plugin(tauri_plugin_safe_area_insets_css_edge::init())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
 ```
 
-## JavaScript Side
+## JavaScript / TypeScript Side
 
-Install the JS API:
+Install the JavaScript API:
+
 ```bash
-npm install @saurl/tauri-plugin-safe-area-insets-css-api
+import '@sahil-vartak/tauri-plugin-safe-area-insets-css-api';
 ```
 
-Import it in your JS/TS file:
+Import it in your JavaScript/TypeScript entry file:
+
 ```ts
-import '@saurl/tauri-plugin-safe-area-insets-css-api';
+import '@sahil-vartak/tauri-plugin-safe-area-insets-css-api';
 ```
 
-After initialization, the following CSS variables are available for use:
-
-`--safe-area-inset-top`
-`--safe-area-inset-bottom`
-
-You can now use these in your CSS:
-```css
-body {
-  padding-top: var(--safe-area-inset-top);
-  padding-bottom: var(--safe-area-inset-bottom);
-}
-```
-# ⚠️ Important Note
-
-Do not run this plugin outside of a Tauri environment. Doing so will create an infinite loop that can significantly slow down your site.
-
-# Notes
-
-The plugin is configured to automatically set --safe-area-inset-bottom to 0 when the keyboard is visible.
-
-It is fully operational on both iOS and Android.
-
-# Fork Updates
-
-> **Fork changes:** Added `getEdgeInsets()` support and exposed safe-area values for all four edges:
-> `--edge-top`, `--edge-right`, `--edge-bottom`, and `--edge-left`.
->
-> **Testing:** The new changes have currently been tested on **Android only**. iOS has not been tested with these modifications.
-
-A Tauri plugin to expose safe area insets as CSS variables for your frontend. This is useful for mobile applications where you need to account for notches, rounded corners, or system bars.
-
-After initialization, the following CSS variables are available:
+After initialization, the following CSS variables are automatically available:
 
 * `--edge-top`
 * `--edge-right`
 * `--edge-bottom`
 * `--edge-left`
 
-You can use these in your CSS:
+These values represent the safe-area inset for each edge in pixels.
+
+You can use them directly in your CSS:
 
 ```css
 body {
@@ -81,6 +58,51 @@ body {
 }
 ```
 
-# Notes
+For example, the plugin exposes the values as:
+
+```ts
+document.documentElement.style.setProperty(
+  "--edge-top",
+  `${edgeInsets?.top}px`
+);
+
+document.documentElement.style.setProperty(
+  "--edge-right",
+  `${edgeInsets?.right}px`
+);
+
+document.documentElement.style.setProperty(
+  "--edge-bottom",
+  `${edgeInsets?.bottom}px`
+);
+
+document.documentElement.style.setProperty(
+  "--edge-left",
+  `${edgeInsets?.left}px`
+);
+```
+
+## ⚠️ Important Note
+
+Do not run this plugin outside of a Tauri environment. Doing so will create an infinite loop that can significantly slow down your site.
+
+## Notes
+
+The plugin is configured to automatically set `--edge-bottom` to `0` when the keyboard is visible.
+
+The original plugin supports both iOS and Android.
+
+## Fork Updates
+
+This fork adds `getEdgeInsets()` support and exposes safe-area values for all four edges:
+
+* `--edge-top`
+* `--edge-right`
+* `--edge-bottom`
+* `--edge-left`
+
+This allows applications to account for safe-area insets on every side of the screen instead of only the top and bottom.
+
+## ⚠️ Testing
 
 The original plugin supports both iOS and Android. **The modifications in this fork have currently only been tested on Android.**
