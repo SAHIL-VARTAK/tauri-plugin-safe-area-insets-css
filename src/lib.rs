@@ -33,7 +33,7 @@ impl<R: Runtime, T: Manager<R>> crate::SafeAreaInsetsCssExt<R> for T {
 
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
-    Builder::new("safe-area-insets-css")
+    Builder::new("safe-area-insets-css-edge")
         .invoke_handler(tauri::generate_handler![
             commands::get_top_inset,
             commands::get_bottom_inset,

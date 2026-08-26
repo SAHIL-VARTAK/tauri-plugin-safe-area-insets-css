@@ -11,19 +11,19 @@ interface GetEdgeInsetsResponse {
 }
 
 export async function getTopInset(): Promise<GetInsetResponse | null> {
-  return await invoke<GetInsetResponse>('plugin:safe-area-insets-css|get_top_inset', {
+  return await invoke<GetInsetResponse>('plugin:safe-area-insets-css-edge|get_top_inset', {
     payload: {},
   });
 }
 
 export async function getBottomInset(): Promise<GetInsetResponse | null> {
-  return await invoke<GetInsetResponse>('plugin:safe-area-insets-css|get_bottom_inset', {
+  return await invoke<GetInsetResponse>('plugin:safe-area-insets-css-edge|get_bottom_inset', {
     payload: {},
   });
 }
 
 export async function getEdgeInsets(): Promise<GetEdgeInsetsResponse | null> {
-  return await invoke<GetEdgeInsetsResponse>("plugin:safe-area-insets-css|get_edge_insets", {
+  return await invoke<GetEdgeInsetsResponse>("plugin:safe-area-insets-css-edge|get_edge_insets", {
       payload: {},
   });
 }
@@ -32,7 +32,7 @@ export async function onKeyboardShown(
   handler: () => void
 ): Promise<PluginListener> {
   return await addPluginListener(
-    'safe-area-insets-css',
+    'safe-area-insets-css-edge',
     'keyboard_shown',
     handler
   );
@@ -42,7 +42,7 @@ export async function onKeyboardHidden(
   handler: () => void
 ): Promise<PluginListener> {
   return await addPluginListener(
-    'safe-area-insets-css',
+    'safe-area-insets-css-edge',
     'keyboard_hidden',
     handler
   );
@@ -52,7 +52,7 @@ export async function onEdgeInsetsChanged(
   handler: (insets: GetEdgeInsetsResponse) => void
 ): Promise<PluginListener> {
   return await addPluginListener(
-    "safe-area-insets-css",
+    "safe-area-insets-css-edge",
     "edge-insets-changed",
     handler
   );
