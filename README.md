@@ -10,7 +10,7 @@ A Tauri plugin to expose safe-area insets as CSS variables for your frontend. Th
 
 ```toml
 [dependencies]
-tauri-plugin-safe-area-insets-css-edge = "0.2"
+tauri-plugin-safe-area-insets-css-edge = "0.2.1"
 ```
 
 ### Initialize the plugin in your Tauri application
@@ -29,13 +29,13 @@ fn main() {
 Install the JavaScript API:
 
 ```bash
-import '@sahil-vartak/tauri-plugin-safe-area-insets-css-api';
+import '@sahil-vartak/tauri-plugin-safe-area-insets-css-api-edge';
 ```
 
 Import it in your JavaScript/TypeScript entry file:
 
 ```ts
-import '@sahil-vartak/tauri-plugin-safe-area-insets-css-api';
+import '@sahil-vartak/tauri-plugin-safe-area-insets-css-api-edge';
 ```
 
 After initialization, the following CSS variables are automatically available:
