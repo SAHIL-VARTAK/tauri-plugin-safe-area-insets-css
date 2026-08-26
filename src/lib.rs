@@ -36,7 +36,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("safe-area-insets-css")
         .invoke_handler(tauri::generate_handler![
             commands::get_top_inset,
-            commands::get_bottom_inset
+            commands::get_bottom_inset,
+            commands::get_edge_insets
         ])
         .setup(|app, api| {
             #[cfg(mobile)]

@@ -1,6 +1,7 @@
 const COMMANDS: &[&str] = &[
     "get_top_inset",
     "get_bottom_inset",
+    "get_edge_insets",
     "registerListener",
     "unregister_listener",
 ];

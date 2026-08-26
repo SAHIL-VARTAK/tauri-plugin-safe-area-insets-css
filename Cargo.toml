@@ -1,19 +1,21 @@
 [package]
-name = "tauri-plugin-safe-area-insets-css"
+name = "tauri-plugin-safe-area-insets-css-edge"
 version = "0.2.0"
-authors = [ "saurL" ]
-description = "A Tauri plugin to provide safe area insets CSS variables for mobile apps."
+authors = ["You"]
+description = "A Tauri plugin that exposes safe area insets as CSS variables for mobile applications."
 edition = "2021"
 license = "MIT"
 rust-version = "1.77.2"
 exclude = ["/examples", "/dist-js", "/guest-js", "/node_modules"]
-links = "tauri-plugin-safe-area-insets-css"
+links = "tauri-plugin-safe-area-insets-css-edge"
 readme = "README.md"
+repository = "https://github.com/SAHIL-VARTAK/tauri-plugin-safe-area-insets-css"
 
 [dependencies]
 tauri = { version = "2.7.0" }
 serde = "1.0"
 thiserror = "2"
 
-[build-dependencies]
-tauri-plugin = { version = "2.3.1", features = ["build"] }
+[build-dependencies.tauri-plugin]
+version = "2.3.1"
+features = ["build"]

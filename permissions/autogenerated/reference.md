@@ -6,6 +6,7 @@ Default permissions for the plugin
 
 - `allow-get-bottom-inset`
 - `allow-get-top-inset`
+- `allow-get-edge-insets`
 - `allow-registerListener`
 - `allow-unregister-listener`
 
@@ -40,6 +41,32 @@ Enables the get_bottom_inset command without any pre-configured scope.
 <td>
 
 Denies the get_bottom_inset command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`safe-area-insets-css:allow-get-edge-insets`
+
+</td>
+<td>
+
+Enables the get_edge_insets command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`safe-area-insets-css:deny-get-edge-insets`
+
+</td>
+<td>
+
+Denies the get_edge_insets command without any pre-configured scope.
 
 </td>
 </tr>

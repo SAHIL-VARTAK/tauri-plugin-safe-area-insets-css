@@ -15,3 +15,7 @@ node_modules/
 
 dist-js
 dist
+
+.gradle
+github_key
+github_key.pub
