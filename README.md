@@ -105,4 +105,4 @@ This allows applications to account for safe-area insets on every side of the sc
 
 ## ⚠️ Testing
 
-The original plugin supports both iOS and Android. **The modifications in this fork have currently only been tested on Android.** 
+The original plugin supports both iOS and Android. **The modifications in this fork have currently only been tested on Android.**
