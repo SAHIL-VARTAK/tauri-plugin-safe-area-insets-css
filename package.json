@@ -1,6 +1,6 @@
 {
   "name": "@sahil-vartak/tauri-plugin-safe-area-insets-css-api",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "You",
   "description": "",
   "type": "module",
